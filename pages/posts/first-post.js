@@ -18,9 +18,9 @@ export default function FirstPost(){
                 }
             />
             <h1>First Post</h1>
-            <h2>
-                <Link href="/" style={{textDecoration: "none"}}> ⬅️ Back to home</Link>
-            </h2>
+            <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel, veniam reiciendis expedita quisquam, unde repellendus dolore assumenda ratione neque doloribus sunt. Doloremque sequi voluptatem laboriosam odit illo amet totam quis!  
+            </p>
         </Layout>
     )
 }

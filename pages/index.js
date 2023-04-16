@@ -2,6 +2,8 @@ import Head from 'next/head';
 import Layout, {siteTitle} from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
 
+import Articles from '../components/articles';
+
 export default function Home() {
   return (
     <Layout home>
@@ -16,6 +18,7 @@ export default function Home() {
           <a href="https://nextjs.org/learn" target='_blank'>el tutorial de Next.js </a>.)
         </p>
       </section>
+      <Articles />
     </Layout>
   );
 }
