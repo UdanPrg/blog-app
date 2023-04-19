@@ -8,7 +8,7 @@ export default function Articles({ id, name, status, species }){
             <div className={styles.article}>
                 <Link href="/posts/first-post">
                     <h2>
-                        {title}
+                        {name}
                     </h2>
                 </Link>
                 <p>{id}</p>
