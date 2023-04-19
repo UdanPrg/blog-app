@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import styles from "./articles.module.css";
 
-export default function Articles({ title, id, date }){
+export default function Articles({ id, name, status, species }){
     return(
         <div className={styles.container}>
             <div className={styles.article}>
@@ -12,7 +12,9 @@ export default function Articles({ title, id, date }){
                     </h2>
                 </Link>
                 <p>{id}</p>
-                <p>{date}</p>
+                <p>{name}</p>
+                <p>{status}</p>
+                <p>{species}</p>
                 <Link href="/posts/first-post">Leer Más</Link>
             </div>
         </div>
