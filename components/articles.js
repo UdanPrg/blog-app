@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import styles from "./articles.module.css";
-import Date from "./date";
+import Date from "./date.js";
 
 // export default function Articles({ id, name, status, species }){
 //     return(
