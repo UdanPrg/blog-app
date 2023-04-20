@@ -1,12 +1,12 @@
 // Necesitamos trabajar con un state para que funcione
 import { React, useState } from 'react';
-import Link from 'next/link';
-import Date from '../components/date';
+// import Link from 'next/link';
+// import Date from '../components/date';
 
 import Head from 'next/head';
 import Layout, {siteTitle} from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
-import uuid from 'react-uuid';
+// import uuid from 'react-uuid';
 
 import { getSortedPostsData } from '../lib/posts';
 export async function getStaticProps() {
