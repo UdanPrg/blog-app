@@ -1,7 +1,7 @@
 // Necesitamos trabajar con un state para que funcione
 import { React, useState } from 'react';
 // import Link from 'next/link';
-// import Date from '../components/Date';
+// import Date from '../components/date';
 
 import Head from 'next/head';
 import Layout, {siteTitle} from '../components/layout';
