@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import styles from "./articles.module.css";
-import Date from "./date.js";
+// import Date from "./date.js";
 
 // export default function Articles({ id, name, status, species }){
 //     return(
@@ -33,7 +33,7 @@ export default function Articles({ id, date, title }){
                 </Link>
                 <p>{id}</p>
                 <small>
-                    <Date dateString={date}/>
+                    {/* <Date dateString={date}/> */}
                 </small>
                 <br />
                 <Link href={`/posts/${id}`}>Leer Más</Link>

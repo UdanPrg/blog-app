@@ -1,7 +1,7 @@
 // Necesitamos trabajar con un state para que funcione
 import { React, useState } from 'react';
 import Link from 'next/link';
-import Date from '../components/date.js';
+// import Date from '../components/date.js';
 
 import Head from 'next/head';
 import Layout, {siteTitle} from '../components/layout';
@@ -64,7 +64,8 @@ export default function Home({staticAllPostsData}) {
                   <Link href={`/posts/${id}`}>{title}</Link>
                   <br />
                   <small className={utilStyles.lightText}>
-                    <Date dateString={date} />
+                    {/* <Date dateString={date} /> */}
+                    {date}
                   </small>
                   <br/>
                   <Link href={`/posts/${id}`}>Leer más</Link>
