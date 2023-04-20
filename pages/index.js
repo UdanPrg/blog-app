@@ -1,7 +1,7 @@
 // Necesitamos trabajar con un state para que funcione
 import { React, useState } from 'react';
-// import Link from 'next/link';
-// import Date from '../components/date.js';
+import Link from 'next/link';
+import Date from '../components/date.js';
 
 import Head from 'next/head';
 import Layout, {siteTitle} from '../components/layout';
@@ -60,16 +60,16 @@ export default function Home({staticAllPostsData}) {
             : <h2>Cargando</h2>
             */} 
             {staticAllPostsData.map(({ id, date, title }) => (
-                // <li className={utilStyles.listItem} key={id}>
-                //   <Link href={`/posts/${id}`}>{title}</Link>
-                //   <br />
-                //   <small className={utilStyles.lightText}>
-                //     <Date dateString={date} />
-                //   </small>
-                //   <br/>
-                //   <Link href={`/posts/${id}`}>Leer más</Link>
-                // </li>
-                <Articles id={id} date={date} title={title} />
+                (<li className={utilStyles.listItem} key={id}>
+                  <Link href={`/posts/${id}`}>{title}</Link>
+                  <br />
+                  <small className={utilStyles.lightText}>
+                    <Date dateString={date} />
+                  </small>
+                  <br/>
+                  <Link href={`/posts/${id}`}>Leer más</Link>
+                </li>)
+                // <Articles id={id} date={date} title={title} />
               ))
             }
         </ul>
