@@ -6,34 +6,26 @@ import Link from 'next/link';
 import Head from 'next/head';
 import Layout, {siteTitle} from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
-// import uuid from 'react-uuid';
+import uuid from 'react-uuid';
+// Componentes
+import Articles from '../components/articles';
+
 
 import { getSortedPostsData } from '../lib/posts';
+import { getSortedPostsDataAPI } from '../lib/external-api-data';
+
 export async function getStaticProps() {
   const staticAllPostsData = getSortedPostsData();
+  const apiAllPostData = await getSortedPostsDataAPI();
   return {
     props: {
       staticAllPostsData,
+      apiAllPostData,
     },
   };
 }
 
-import { getSortedPostsDataAPI } from '../lib/external-api-data';
-
-import Articles from '../components/articles';
-
-export default function Home({staticAllPostsData}) {
-  // Declaramos un nueo estado para manejar los datos con un array vacio.
-  const [allPostsData, setAllPostsData] = useState([]);
-
-  // Traemos la promesa que se conecta a a la API de Rick y Morty
-  getSortedPostsDataAPI()
-  // y seguido la resolvemos con una funcion anónima
-  .then(
-    // Dentro de la funcion modificamos el estado allPostsData
-    // Asi cuando la petición se resuelva por completo se puede usar sin ningun problema la data recibida
-    res => setAllPostsData(res.results)
-  )
+export default function Home({staticAllPostsData, apiAllPostData}) {
   return (
     <Layout home>
       <Head>
@@ -48,32 +40,38 @@ export default function Home({staticAllPostsData}) {
         </p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
-        <ul className={utilStyles.list}>
-          {/* Luego iteramos en nuestra variable estado verificando  que tengo info 
-            allPostsData.length > 0 
-            /* Si tiene más de un datos (si ya conecto) mostramos todos los articles 
-            ? allPostsData.map(({ id, name, status, species }) => (
-              <Articles id={id} name={name} status={status} species={species} key={uuid()} />
-            )) 
-            /* Si no asumimos que aun está "Cargando" 
-            : <h2>Cargando</h2>
-            */} 
-            {staticAllPostsData.map(({ id, date, title }) => (
-                (<li className={utilStyles.listItem} key={id}>
-                  <Link href={`/posts/${id}`}>{title}</Link>
-                  <br />
-                  <small className={utilStyles.lightText}>
-                    {/* <Date dateString={date} /> */}
-                    {date}
-                  </small>
-                  <br/>
-                  <Link href={`/posts/${id}`}>Leer más</Link>
-                </li>)
-                // <Articles id={id} date={date} title={title} />
-              ))
+        
+        <section className='flex'>
+
+          <ul className={utilStyles.list}>
+            <li>
+              <h2 className={utilStyles.headingLg}>Static Blog</h2>
+            </li>
+              {staticAllPostsData.map(({ id, date, title }) => (
+                  (<li className={utilStyles.listItem} key={id}>
+                    <Link href={`/posts/${id}`}>{title}</Link>
+                    <br />
+                    <small className={utilStyles.lightText}>
+                      {/* <Date dateString={date} /> */}
+                      {date}
+                    </small>
+                    <br/>
+                    <Link href={`/posts/${id}`}>Leer más</Link>
+                  </li>)
+                ))
+              }
+          </ul>
+          <ul className={utilStyles.list}>
+            <li>
+              <h2 className={utilStyles.headingLg}>External API Blog</h2>
+            </li>
+            {
+              apiAllPostData.results.map(({ id, name, status, species }) => (
+                <Articles id={id} name={name} status={status} species={species} key={uuid()} />
+              )) 
             }
-        </ul>
+          </ul>
+        </section>
       </section>
     </Layout>
   );

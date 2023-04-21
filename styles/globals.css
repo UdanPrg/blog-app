@@ -26,3 +26,6 @@ img {
   max-width: 100%;
   display: block;
 }
+.flex{
+  display: flex;
+}
